@@ -14,3 +14,5 @@ echo $encode = Flurex::encode ($text, $key);
 echo PHP_EOL;
 echo Flurex::decode ($encode, $key);
 ```
+
+Автор: [Подвирный Никита](https://vk.com/technomindlp). Специально для [Enfesto Studio Group](http://vk.com/hphp_convertation)
