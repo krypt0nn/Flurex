@@ -42,6 +42,7 @@ class Flurex
         $text = self::mapMove ($text, $key, 1);
 
         $post  = rand (1, 99999999) + $keylen;
+        $enc   = array ();
         $enc[] = self::toStep ($post + ord (($key[0] + $key[$keylen - 1]) % 256));
 
         for ($i = 0; $i < $len; ++$i)
@@ -71,6 +72,7 @@ class Flurex
         $keylen = sizeof ($key);
 
         $post = self::fromStep ($text[0]) - ord (($key[0] + $key[$keylen - 1]) % 256);
+        $dec  = array ();
         $text = array_slice ($text, 1);
 
         for ($i = 0; $i < $len; ++$i)
@@ -97,7 +99,7 @@ class Flurex
     public static function toStep ($dec)
     {
         $alphabet = range ('!', '~');
-        $step = [];
+        $step = array ();
 
         while ($dec > 0)
         {
@@ -120,7 +122,7 @@ class Flurex
     public static function fromStep ($step)
     {
         $alphabet = array_flip (range ('!', '~'));
-        $len      = strlen ($step);
+        $len = strlen ($step);
 
         $dec = 0;
 
@@ -141,6 +143,7 @@ class Flurex
     protected static function typeString ($string, $len = 0)
     {
         $len = max (($slen = strlen ($string)), $len);
+		$int = array ();
 
         for ($i = 0; $i < $len; ++$i)
             $int[] = ord ($string[$i % $slen]) + $i;
